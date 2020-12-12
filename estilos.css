@@ -1,0 +1,186 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;	
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	background: #000 url('imagenes/fondoflex.jpg');
+	/*para que la imagen abarque el 100% de la pagina*/
+	background-size:cover;
+	/*para que no se repita la imagen*/
+	background-attachment: fixed;
+}
+/*contenedor padre de cada uno de los elementos como header, main, footer etc*/
+.contenedor{
+	margin: auto;
+	width:90%;
+	max-width: 1000px;
+	display: flex;
+	flex-direction: row;
+	/*soluciona los erroes de posicion*/
+	flex-wrap: wrap;
+}
+/*elemento padre del .menu*/
+header{
+	width: 100%;
+	padding:50px 0;
+	/*para aplicar flexbox a los hijos */
+	display: flex;
+	/*para que un elemento se ponga a un lado del otro*/
+	flex-direction: row;
+	/*acomodar*/
+	justify-content: space-between;
+	/*centrar una linea de elelmentos*/
+	align-items:center ;
+
+}
+/*elemento hijo del header*/
+header .menu a {
+	color: #fff;
+	text-decoration: none;
+	margin-right: 40px;
+	font-size: 18px;
+}
+header .menu a:hover {
+text-decoration: underline;
+}
+
+.main{
+	background:#fff;
+	padding: 20px;
+	width: 70%;
+}
+
+.main article .thumb{
+	margin-bottom: 20px;
+
+}
+.main article .thumb img{
+	width: 100%;
+	/*siempre ponerlo*/
+	vertical-align: top;
+}
+
+.main article h2{
+	margin-bottom: 20px;
+	font-weight: normal;
+	font-size: 32px;
+}
+
+.main article p{
+	margin-bottom: 20px;
+	font-size: 14;
+	/*espaciado entre cada renglon*/
+	line-height: 23px;
+	text-align: justify;
+}
+/*contenedor padre de los ad*/
+aside {
+	width: 30%;
+	background:#537dca;
+	padding: 20px;
+	display: flex;
+	/*para que se pongan uno debajo del otro*/
+	flex-direction: column;
+	flex-wrap: wrap;
+	/*pone el espacio sobrante en medio de los dos contenedores hijo*/
+	justify-content: space-between;
+}
+/*contenedores hijo del aside*/
+aside .ad{
+	font-size: 30px;
+	text-align: center;
+	color:#fff;
+	padding: 50px 0;
+	background:#4264ae;
+	/*margin-bottom:20px;*/
+}
+/*contenedor padre padre de la clase autor y su p, la clase redes y sus enlaces(a)*/
+footer{
+	margin:20px 0;
+	background: rgba(255,255,255,.2);
+	padding: 20px;
+	width: 100%;
+	color:#fff;
+	display: flex;
+	flex-direction: row;
+	/*en este caso no ocupamos solucionar los erroes de posicion*/
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+footer .redes a{
+	color:#fff;
+	text-decoration: underline;
+	margin-left: 20px;
+}
+
+footer .redes a:hover{
+	text-decoration: none;
+}
+
+/*aplicar responsive design*/
+/*de 600px para abajo se activa*/
+@media screen and (max-width: 800px){
+	 .main{
+	 	width: 100%
+	 }
+	 aside{
+	 	width: 100%;
+	 	/*para poner en fila a un lado del otro, pero como son del 100% los dos se va
+	 	a poner uno debajo del otro*/
+	 	flex-direction: row;
+	 }
+
+	 aside .ad{
+	 	width: 40%;
+	 }
+}
+
+@media screen and (max-width: 600px){
+	header{
+		/*lo cambio de row a column porque de esta manera obligo a sus componenetes a ponerse
+		uno debajo del otro y no hacia los lados*/
+		flex-direction: column;
+
+		padding-bottom: 20px;
+	}
+
+	header .menu{
+		width: 100%;
+		background: rgba(255,255,255,.2);
+		text-align: center;
+		padding: 20px;
+	}
+	header .menu a{
+		margin: 0 20px;
+	}
+
+	header .logo{
+		margin-bottom: 20px;
+	}
+
+	footer{
+		flex-direction: column;
+		text-align: center;
+	}
+	/*--------------para cambiar de posicion el nombre con los enlaces---------------*/
+	footer .autor{
+		order: 2;
+	}
+	footer .redes{
+		order: 1;
+		margin-bottom: 20px;
+	}
+	/*--------------------------------------------------------------------------------*/
+}
+
+
+@media  screen and (max-width: 500px) {
+	aside{
+		display: none;
+	}
+}
